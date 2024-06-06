@@ -13,7 +13,7 @@ class LocalStorage {
 
   Future<File> getlocalFile() async {
     final path = await getLocalPath();
-    return File('${path}/demo_localfile.txt');
+    return File('$path/demo_localfile.txt');
   }
 
   Future<File> writeTextToLocalFile(String text) async {
@@ -26,7 +26,7 @@ class LocalStorage {
       final file = await getlocalFile();
       content = await file.readAsString();
     } catch (error) {
-      this.content = 'Error ${error}';
+      content = 'Error $error';
     }
   }
 }

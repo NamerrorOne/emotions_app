@@ -24,11 +24,11 @@ class Tabs extends StatelessWidget {
 
     return Container(
         child: model?.activeCardId == null
-            ? SizedBox()
+            ? const SizedBox()
             : Wrap(
                 spacing: 8,
                 children: List.generate(tabsArray!.length - 1, (int index) {
-                  final text = tabsArray?[index + 1];
+                  final text = tabsArray[index + 1];
                   return CustomChip(labelText: text);
                 }),
               ));
@@ -86,7 +86,7 @@ class CustomChip extends StatelessWidget {
                           .pickedChip ==
                       labelText
                   ? Colors.white
-                  : Color(0xFF4C4C69),
+                  : const Color(0xFF4C4C69),
               fontSize: 11),
         ),
       ),

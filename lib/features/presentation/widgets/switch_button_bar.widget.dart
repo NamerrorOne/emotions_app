@@ -4,6 +4,8 @@ import 'package:testovoe/core/styles/fontstyle.dart';
 import 'package:testovoe/features/presentation/manager/button_data_provider.dart';
 
 class SwitchButtonBarWidget extends StatelessWidget {
+  const SwitchButtonBarWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     String? buttonMode = context
@@ -28,22 +30,24 @@ class SwitchButtonBarWidget extends StatelessWidget {
                       ?.model
                       .changeButtonMode();
                 },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    SvgPicture.asset(
-                        '/Users/igorabramov/Desktop/testovoe/testovoe/assets/icons/statistic.svg'),
-                    const SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      "Статистика",
-                      style: AppStyles.textStyleNunito.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFFBCBCBF),
-                          fontSize: 12),
-                    )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      SvgPicture.asset('assets/icons/statistic.svg'),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        "Статистика",
+                        style: AppStyles.textStyleNunito.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFFBCBCBF),
+                            fontSize: 12),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -151,7 +155,7 @@ class SwitchButtonBarWidget extends StatelessWidget {
         ],
       );
     } else {
-      return Center(
+      return const Center(
         child: Text(
           "Ошибка при загрузке кнопки",
         ),

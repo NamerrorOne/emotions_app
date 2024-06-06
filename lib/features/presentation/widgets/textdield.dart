@@ -5,7 +5,7 @@ import 'package:testovoe/features/presentation/manager/card_list_dataprovider.da
 import 'package:testovoe/features/presentation/manager/slider_data_provider.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({super.key});
+  const CustomTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,25 +35,25 @@ class CustomTextField extends StatelessWidget {
       },
       decoration: InputDecoration(
         hintText: 'Введите текст',
-        hintStyle: TextStyle(color: Colors.grey),
+        hintStyle: const TextStyle(color: Colors.grey),
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(13),
           borderSide: BorderSide(
-            color: Color(0xFFB6A1C0).withOpacity(0.11),
+            color: const Color(0xFFB6A1C0).withOpacity(0.11),
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(13),
           borderSide: BorderSide(
-            color: Color(0xFFB6A1C0).withOpacity(0.11),
+            color: const Color(0xFFB6A1C0).withOpacity(0.11),
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(13),
           borderSide: BorderSide(
-            color: Color(0xFFB6A1C0).withOpacity(0.11),
+            color: const Color(0xFFB6A1C0).withOpacity(0.11),
           ),
         ),
         contentPadding: const EdgeInsets.only(

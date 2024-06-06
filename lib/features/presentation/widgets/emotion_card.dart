@@ -36,7 +36,7 @@ class EmotionCard extends StatelessWidget {
                           CardsListDataProvider>()
                       ?.cardsListModel
                       .activeCardId
-              ? Border.all(color: Color(0xFFFF8702), width: 2)
+              ? Border.all(color: const Color(0xFFFF8702), width: 2)
               : null,
           color: Colors.white,
         ),

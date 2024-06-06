@@ -46,15 +46,15 @@ class ThumbSlider extends StatelessWidget {
         ),
         SliderTheme(
           data: SliderThemeData(
-            overlayColor: Colors.white,
-            activeTrackColor: activeTrackColor,
-            trackHeight: 8,
-            inactiveTrackColor: inactiveTrackColor,
-            thumbColor: activeTrackColor,
-            activeTickMarkColor: Colors.transparent,
-            inactiveTickMarkColor: Colors.transparent,
-            disabledActiveTickMarkColor: Colors.transparent,
-          ),
+              overlayColor: Colors.white,
+              activeTrackColor: activeTrackColor,
+              trackHeight: 8,
+              inactiveTrackColor: inactiveTrackColor,
+              thumbColor: activeTrackColor,
+              activeTickMarkColor: Colors.transparent,
+              inactiveTickMarkColor: Colors.transparent,
+              disabledActiveTickMarkColor: Colors.transparent,
+              disabledInactiveTickMarkColor: Colors.transparent),
           child: Slider(
             divisions: 5,
             min: 0,
@@ -109,12 +109,12 @@ class ThumbSlider extends StatelessWidget {
               Text(
                 startTitle,
                 style: AppStyles.textStyleNunito
-                    .copyWith(color: Color(0xFF919EAB)),
+                    .copyWith(color: const Color(0xFF919EAB)),
               ),
               Text(
                 endTitle,
                 style: AppStyles.textStyleNunito
-                    .copyWith(color: Color(0xFF919EAB)),
+                    .copyWith(color: const Color(0xFF919EAB)),
               ),
             ],
           ),

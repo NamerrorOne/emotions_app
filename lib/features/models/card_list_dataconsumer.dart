@@ -2,8 +2,6 @@ import 'package:flutter/widgets.dart';
 
 class CardsListDataConsumer extends ChangeNotifier {
   int? activeCardId;
-  bool tabsInit = false;
-  int? activitedTabs;
 
   bool tabTriggered = false;
   List cardTabs = [];
@@ -11,7 +9,7 @@ class CardsListDataConsumer extends ChangeNotifier {
   bool acceptedToConfirm = false;
 
   setActiveCardId(int id) {
-    this.activeCardId = id;
+    activeCardId = id;
     notifyListeners();
   }
 
@@ -19,24 +17,24 @@ class CardsListDataConsumer extends ChangeNotifier {
     print(id);
     print(tabs[id]);
     if (id >= 0 && id < tabs.length) {
-      this.tabTriggered = true;
-      this.cardTabs = tabs[id - 1];
+      tabTriggered = true;
+      cardTabs = tabs[id - 1];
     }
     notifyListeners();
   }
 
   pickChip(String value) {
-    this.pickedChip = value;
+    pickedChip = value;
     notifyListeners();
   }
 
   makeButtonAcceptableToConfirm() {
-    this.acceptedToConfirm = true;
+    acceptedToConfirm = true;
     notifyListeners();
   }
 
   makeButtonNoAcceptableToConfirm() {
-    this.acceptedToConfirm = false;
+    acceptedToConfirm = false;
     notifyListeners();
   }
 }
@@ -69,13 +67,21 @@ List tabs3 = [
   'Грубость',
   'Бешенство',
   'Ярость',
-  'Психушка',
+  'Ожесточение',
   'что то еще',
 ];
 List tabs4 = [
-  'Восторг',
-  'Хорошее настроение',
-  'Страх',
+  'Грусть',
+  'Плохое настроение',
+  'Печаль',
+  'Ужас',
+  'Отсутствие мотвиации',
+  'Сонливость',
+  'Отчаяние',
+  'Тревожность',
+  'Переживание',
+  'Боязное состояние',
+  'Душевная боль',
   'Ужас',
 ];
 List tabs5 = [

@@ -1,8 +1,8 @@
 class EmotionCardEntity {
-  String urlPath;
-  String title;
-  final id;
+  final String urlPath;
+  final String title;
+  final int id;
 
-  EmotionCardEntity(
+  const EmotionCardEntity(
       {required this.title, required this.urlPath, required this.id});
 }

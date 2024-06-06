@@ -9,17 +9,17 @@ class SlidersDataConsumer extends ChangeNotifier {
   get secondSliderValue => _secondSliderValue;
 
   setFirstSliderValue(double value) {
-    this._firstSliderValue = value;
+    _firstSliderValue = value;
     notifyListeners();
   }
 
   setSecondSliderValue(double value) {
-    this._secondSliderValue = value;
+    _secondSliderValue = value;
     notifyListeners();
   }
 
   setControllerText(String value) {
-    this.controllerText = value;
+    controllerText = value;
     notifyListeners();
   }
 }

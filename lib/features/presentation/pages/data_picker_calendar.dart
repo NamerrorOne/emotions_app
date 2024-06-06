@@ -2,27 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:testovoe/core/styles/fontstyle.dart';
 
 class Calendar extends StatefulWidget {
+  const Calendar({super.key});
+
   @override
   _CalendarState createState() => _CalendarState();
 }
 
 class _CalendarState extends State<Calendar> {
-  DateTime _currentDate = DateTime.now();
-  int _currentMonth = DateTime.now().month;
-  int _currentYear = DateTime.now().year;
+  final DateTime _currentDate = DateTime.now();
+  final int _currentMonth = DateTime.now().month;
+  final int _currentYear = DateTime.now().year;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 50),
+        const SizedBox(height: 50),
         _buildHeader(),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: _buildWeekDays(),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         _buildMonths(),
       ],
     );
@@ -36,14 +38,14 @@ class _CalendarState extends State<Calendar> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.close, color: Color(0xFFBCBCBF)),
+          icon: const Icon(Icons.close, color: Color(0xFFBCBCBF)),
         ),
         Padding(
           padding: const EdgeInsets.only(right: 12),
           child: Text(
             'Сегодня',
             style: AppStyles.textStyleNunito.copyWith(
-                color: Color(0xFFBCBCBF),
+                color: const Color(0xFFBCBCBF),
                 fontWeight: FontWeight.w600,
                 fontSize: 18),
           ),
@@ -59,7 +61,7 @@ class _CalendarState extends State<Calendar> {
         return Text(
           day,
           style: AppStyles.textStyleNunito.copyWith(
-            color: Color(0xFFBCBCBF),
+            color: const Color(0xFFBCBCBF),
             fontWeight: FontWeight.w600,
             fontSize: 12,
           ),
@@ -78,25 +80,25 @@ class _CalendarState extends State<Calendar> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (index > 0) SizedBox(height: 20),
+                if (index > 0) const SizedBox(height: 20),
                 Text(
                   '$_currentYear',
                   style: AppStyles.textStyleNunito.copyWith(
-                    color: Color(0xFFBCBCBF),
+                    color: const Color(0xFFBCBCBF),
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   _monthNames[index],
                   style: AppStyles.textStyleNunito.copyWith(
-                    color: Color(0xFF4C4C69),
+                    color: const Color(0xFF4C4C69),
                     fontWeight: FontWeight.w700,
                     fontSize: 24,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 _buildDaysForMonth(index + 1, _currentYear),
               ],
             );
@@ -113,15 +115,15 @@ class _CalendarState extends State<Calendar> {
 
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 7,
         childAspectRatio: 1,
       ),
       itemCount: daysInMonth + weekday - 1,
       itemBuilder: (context, index) {
         if (index < weekday - 1) {
-          return SizedBox.shrink();
+          return const SizedBox.shrink();
         } else {
           final day = index - weekday + 2;
           final isToday = day == _currentDate.day &&
@@ -211,7 +213,7 @@ class CalendarDay extends StatelessWidget {
         child: Text(
           '$day',
           style: AppStyles.textStyleNunito.copyWith(
-            color: isToday ? Colors.white : Color(0xFF4C4C69),
+            color: isToday ? Colors.white : const Color(0xFF4C4C69),
             fontWeight: FontWeight.w500,
             fontSize: 18,
           ),

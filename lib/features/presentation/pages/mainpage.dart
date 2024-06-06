@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:testovoe/core/helpers/get_data.dart';
 import 'package:testovoe/core/styles/fontstyle.dart';
-import 'package:testovoe/features/local_storage/localstorage.dart';
 import 'package:testovoe/features/models/card_list_dataconsumer.dart';
 import 'package:testovoe/features/models/sliders_data_consumers.modal.dart';
 import 'package:testovoe/features/presentation/manager/button_data_provider.dart';
@@ -45,7 +44,7 @@ class _MainPageState extends State<MainPage> {
             surfaceTintColor: const Color(0xFFFFFDFC),
             shadowColor: Colors.black,
             backgroundColor: const Color(0xFFFFFDFC),
-            title: DateText(),
+            title: const DateText(),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 10.0),
@@ -54,7 +53,7 @@ class _MainPageState extends State<MainPage> {
                     showModalBottomSheet(
                       isScrollControlled: true,
                       context: context,
-                      builder: (context) => Calendar(),
+                      builder: (context) => const Calendar(),
                     );
                   },
                   icon: SvgPicture.asset('assets/icons/calendar-icon.svg'),
@@ -90,7 +89,7 @@ class BuildBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Padding(
+        const Padding(
           padding: EdgeInsets.symmetric(horizontal: 44),
           child: SwitchButtonBarWidget(),
         ),
@@ -115,9 +114,7 @@ class BuildBody extends StatelessWidget {
 }
 
 class _BuldEmotionList extends StatelessWidget {
-  const _BuldEmotionList({
-    super.key,
-  });
+  const _BuldEmotionList();
 
   @override
   Widget build(BuildContext context) {
@@ -126,40 +123,40 @@ class _BuldEmotionList extends StatelessWidget {
 }
 
 class _BuildMainBody extends StatelessWidget {
-  _BuildMainBody(
-      {super.key, required this.slidersModel, required this.cardsListModel});
+  const _BuildMainBody(
+      {required this.slidersModel, required this.cardsListModel});
 
-  SlidersDataConsumer slidersModel;
-  CardsListDataConsumer cardsListModel;
+  final SlidersDataConsumer slidersModel;
+  final CardsListDataConsumer cardsListModel;
 
   Future<void> saveData() async {
     var directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/demo_localfile.txt');
-    final _nowDate = NowDateConsumer.getDate();
+    final nowDate = NowDateConsumer.getDate();
 
-    final currentDay = '${_nowDate!.day} ${_nowDate!.month} ${_nowDate!.time}';
+    final currentDay = '${nowDate.day} ${nowDate.month} ${nowDate.time}';
     final stressValue = slidersModel.firstSliderValue.toString();
     final selfish = slidersModel.secondSliderValue.toString();
     final notes = slidersModel.controllerText.toString();
     final tabsValue = cardsListModel.pickedChip;
 
     file.writeAsString(
-        'Дата: ${currentDay}\nЧто чувствуешь? ${tabsValue}\nУровень стресса: ${stressValue}%\nСамооценка: ${selfish}%\nЗаметки: ${notes}');
+        'Дата: $currentDay\nЧто чувствуешь? $tabsValue\nУровень стресса: $stressValue%\nСамооценка: $selfish%\nЗаметки: $notes');
   }
 
   @override
   Widget build(BuildContext context) {
-    void _showPopup() {
+    void showPopup() {
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Colors.white,
-            title: Text(
+            title: const Text(
               'Успех',
               style: TextStyle(color: Colors.black),
             ),
-            content: Text(
+            content: const Text(
               'Ваши данные успешно сохранены в локальное хранилище',
               style: TextStyle(color: Colors.black),
             ),
@@ -168,7 +165,7 @@ class _BuildMainBody extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(
+                child: const Text(
                   'Закрыть',
                   style: TextStyle(color: Colors.black),
                 ),
@@ -179,13 +176,10 @@ class _BuildMainBody extends StatelessWidget {
       );
     }
 
-//models
+//model
     final CardsListDataConsumer? cardsModel = context
         .dependOnInheritedWidgetOfExactType<CardsListDataProvider>()
         ?.cardsListModel;
-    final SlidersDataConsumer? slidersModel = context
-        .dependOnInheritedWidgetOfExactType<SlidersDataProvider>()
-        ?.slidersModel;
 
     bool isAccepted = cardsModel!.acceptedToConfirm;
 
@@ -204,10 +198,10 @@ class _BuildMainBody extends StatelessWidget {
           height: 20,
         ),
         const _BuldEmotionList(),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        Tabs(),
+        const Tabs(),
         const SizedBox(
           height: 36,
         ),
@@ -260,7 +254,7 @@ class _BuildMainBody extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        CustomTextField(),
+        const CustomTextField(),
         const SizedBox(
           height: 16,
         ),
@@ -270,7 +264,7 @@ class _BuildMainBody extends StatelessWidget {
             isAccepted: isAccepted,
             callback: () {
               saveData();
-              _showPopup();
+              showPopup();
             },
           ),
         ),
@@ -311,7 +305,7 @@ class _BuildSecondaryBodyState extends State<_BuildSecondaryBody> {
                     setState(() {});
                   }
                 },
-                child: Text("Нажмите, чтобы отобразить данные")),
+                child: const Text("Нажмите, чтобы отобразить данные")),
             Text(localStorageData ?? '')
           ]),
     );
